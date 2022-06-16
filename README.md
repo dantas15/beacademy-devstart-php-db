@@ -42,6 +42,16 @@ docker run --detach --name mariadb-php-db --env MARIADB_USER=php_db_user --env M
         - `MARIADB_PASSWORD`=`drowssap`
         - `MARIADB_ROOT_PASSWORD`=`toor_drowssap`
 
+### Executar o MariaDB pelo terminal
+
+```bash
+ docker exec -it <container-id> mariadb -u php_db_user -pdrowssap
+```
+
+- Substitua `<container-id>` pelo id do container criado (`docker ps` para ver os containers rodando)
+- `-u` é o usuário fornecido
+- `-p` é a senha fornecida para o usuário
+
 ## Ferramentas
 
 - [VSCode](https://code.visualstudio.com/)
