@@ -30,7 +30,7 @@ Lembre-se de mudar as variáveis de ambiente)_
 - Baixando a última imagem disponível
 
 ```bash
-docker run --detach --name mariadb-php-db --env MARIADB_USER=php_db_user --env MARIADB_PASSWORD=drowssap --env MARIADB_ROOT_PASSWORD=toor_drowssap mariadb:latest
+docker run --detach --name mariadb-php-db --env MARIADB_USER=php_db_user --env MARIADB_PASSWORD=drowssap --env MARIADB_ROOT_PASSWORD=toor_drowssap -p3306:3306 mariadb:latest
 ```
 
 - `--detach` ou `-d` faz com que o container continue executando normalmente. Caso não seja fornecido, só será possível
