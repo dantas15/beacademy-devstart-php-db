@@ -18,10 +18,10 @@ DROP TABLE tb_professor;
 
 CREATE TABLE tb_aluno
 (
-    nome      VARCHAR(100) NOT NULL,
-    cpf       CHAR(11)     NOT NULL,
-    email     VARCHAR(255) NOT NULL,
-    matricula VARCHAR(10)  NOT NULL
+    nome      VARCHAR(100)        NOT NULL,
+    cpf       CHAR(11) UNIQUE     NOT NULL,
+    email     VARCHAR(255) UNIQUE NOT NULL,
+    matricula VARCHAR(10) UNIQUE  NOT NULL
 );
 
 -- Inserir dados  --
@@ -31,3 +31,8 @@ VALUES ('Alessandro', 'ale@teste.com', '33344478901');
 INSERT INTO tb_professor (nome, email, cpf)
 VALUES ('Bruno', 'bruno@teste.com', '12345678901');
 
+-- Selecionar os dados --
+SELECT *
+FROM tb_professor;
+
+-- Criar as tabelas de curso e disciplina
