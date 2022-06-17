@@ -8,10 +8,13 @@ USE db_escola;
 -- Criar tabela --
 CREATE TABLE tb_professor
 (
-    nome  VARCHAR(100) NOT NULL,
-    cpf   CHAR(11)     NOT NULL,
-    email VARCHAR(255) NOT NULL
+    nome  VARCHAR(100)        NOT NULL,
+    cpf   CHAR(11) UNIQUE     NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL
 );
+
+-- Excluir tabela --
+DROP TABLE tb_professor;
 
 CREATE TABLE tb_aluno
 (
@@ -23,7 +26,8 @@ CREATE TABLE tb_aluno
 
 -- Inserir dados  --
 INSERT INTO tb_professor (nome, email, cpf)
-VALUES ('Alessandro', 'ale@teste.com', '12345678901');
+VALUES ('Alessandro', 'ale@teste.com', '33344478901');
 
 INSERT INTO tb_professor (nome, email, cpf)
 VALUES ('Bruno', 'bruno@teste.com', '12345678901');
+
