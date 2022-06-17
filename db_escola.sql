@@ -8,6 +8,7 @@ USE db_escola;
 -- Criar tabela --
 CREATE TABLE tb_professor
 (
+    id INT(11) PRIMARY KEY AUTO_INCREMENT,
     nome  VARCHAR(100)        NOT NULL,
     cpf   CHAR(11) UNIQUE     NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL
