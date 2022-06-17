@@ -36,3 +36,10 @@ SELECT *
 FROM tb_professor;
 
 -- Criar as tabelas de curso e disciplina
+CREATE TABLE tb_curso (
+    nome VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE tb_disciplina (
+    nome VARCHAR(100) NOT NULL
+);
