@@ -14,7 +14,7 @@
 
 Repositório final das aulas introdutórias de PHP do Devstart [Paylivre](https://www.paylivre.com/),
 da [BeAcademy](https://www.beacademy.com.br/). Este repositório, diferentemente dos outros, apresenta um projeto com um
-CRUD completo utilizando um banco de dados MariaDB.
+CRUD completo de categorias e produtos utilizando um banco de dados MariaDB.
 
 ## Requisitos
 
@@ -65,17 +65,23 @@ docker run --detach --name mariadb-php-db --env MARIADB_USER=php_db_user --env M
    # Clonando com HTTPS
    git clone https://github.com/gusgalote/beacademy-devstart-php-db.git
 
-   # Entre no diretório raiz do projeto
-   cd beacademy-devstart-php-db
+   # Entre no diretório da pasta principal do projeto
+   cd beacademy-devstart-php-db/projeto final
    ```
 
-2. Pela raiz do projeto, ligue o servidor embutido do PHP:
+2. Instale as dependências com `composer`
 
    ```bash
-   php -S localhost:8000 -t projeto-final/public
+   composer install
    ```
 
-3. Pronto ✅ O projeto desenvolvido estará rodando em http://localhost:8000/
+3. Ligue o servidor embutido do PHP na pasta `public`:
+
+   ```bash
+   php -S localhost:8000 -t public
+   ```
+
+4. Pronto ✅ O projeto desenvolvido estará rodando em http://localhost:8000/
 
 ## Ferramentas
 
