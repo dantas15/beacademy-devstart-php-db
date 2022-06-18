@@ -23,4 +23,8 @@ if (!isset($routes[$url])) {
 $controllerName = $routes[$url]['controller'];
 $methodName = $routes[$url]['method'];
 
+include '../includes/head.php';
+
 (new $controllerName())->$methodName();
+
+include '../includes/foot.php';
