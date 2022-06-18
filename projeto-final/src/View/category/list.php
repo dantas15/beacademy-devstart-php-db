@@ -22,6 +22,7 @@
           <td> {$name} </td>
           <td> {$description} </td>
           <td>
+            <a href='/categorias/editar?id={$id}'class='btn btn-sm btn-warning'>Editar</a>
             <a href='/categorias/excluir?id={$id}'class='btn btn-sm btn-danger'>Excluir</a>
           </td>
         </tr>";

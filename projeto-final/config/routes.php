@@ -20,6 +20,7 @@ $routes = [
   '/categorias' => route(CategoryController::class, 'listAction'),
   '/categorias/nova' => route(CategoryController::class, 'addAction'),
   '/categorias/excluir' => route(CategoryController::class, 'removeAction'),
+  '/categorias/editar' => route(CategoryController::class, 'updateAction'),
 ];
 
 return $routes;
