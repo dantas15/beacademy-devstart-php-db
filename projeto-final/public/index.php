@@ -2,34 +2,51 @@
 
 include '../vendor/autoload.php';
 
-use App\Controller\IndexController;
-use App\Controller\ProductController;
-use App\Controller\ErrorController;
+$database = 'db_store';
+$username = 'root';
+$password = 'toor_drowssap';
 
-$url = explode('?', $_SERVER['REQUEST_URI'])[0];
+$connection = new PDO('mysql:host=127.0.0.1;dbname=' . $database, $username, $password);
 
-function route(string $controllerName, string $methodName)
-{
-  return [
-    'controller' => $controllerName,
-    'method' => $methodName,
-  ];
+$query = 'SELECT * FROM tb_category;';
+
+$preparacao = $connection->prepare($query);
+$preparacao->execute();
+
+var_dump($preparacao);
+
+while ($registro = $preparacao->fetch()) {
+  var_dump($registro);
 }
 
-$routes = [
-  '/' => route(IndexController::class, 'indexAction'),
-  '/produtos' => route(ProductController::class, 'listAction'),
-  '/produtos/novo' => route(ProductController::class, 'addAction'),
-];
+// use App\Controller\IndexController;
+// use App\Controller\ProductController;
+// use App\Controller\ErrorController;
 
-if (!isset($routes[$url])) {
-  (new ErrorController())->notFoundAction();
-  exit;
-}
+// $url = explode('?', $_SERVER['REQUEST_URI'])[0];
 
-$controllerName = $routes[$url]['controller'];
-$methodName = $routes[$url]['method'];
+// function route(string $controllerName, string $methodName)
+// {
+//   return [
+//     'controller' => $controllerName,
+//     'method' => $methodName,
+//   ];
+// }
 
-(new $controllerName())->$methodName();
+// $routes = [
+//   '/' => route(IndexController::class, 'indexAction'),
+//   '/produtos' => route(ProductController::class, 'listAction'),
+//   '/produtos/novo' => route(ProductController::class, 'addAction'),
+// ];
+
+// if (!isset($routes[$url])) {
+//   (new ErrorController())->notFoundAction();
+//   exit;
+// }
+
+// $controllerName = $routes[$url]['controller'];
+// $methodName = $routes[$url]['method'];
+
+// (new $controllerName())->$methodName();
   
-var_dump($routes[$url]);
+// var_dump($routes[$url]);
