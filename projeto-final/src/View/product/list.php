@@ -2,9 +2,14 @@
     <h1>
         Listar produtos
     </h1>
-    <a href="/produtos/novo" class="btn btn-dark">
-        Novo produto
-    </a>
+    <div>
+        <a href="/produtos/novo" class="btn btn-primary">
+            Novo produto
+        </a>
+        <a href="/produtos/relatorio" class="btn btn-dark">
+            Gerar PDF
+        </a>
+    </div>
 </div>
 
 <table class="table table-hover table-striped">
