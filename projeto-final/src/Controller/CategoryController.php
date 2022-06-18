@@ -74,6 +74,8 @@ class CategoryController extends AbstractController
         $result = $con->prepare($query);
         $result->execute([$id]);
 
-        echo 'Pronto, categoria excluída!';
+        $message = 'Pronto, categoria excluída!';
+
+        parent::message($message);
     }
 }
