@@ -8,23 +8,45 @@ use App\Controller\Connection\Connection;
 
 class ProductController extends AbstractController
 {
-  public function listAction(): void
-  {
-    $con = Connection::getConnection();
+    public function listAction(): void
+    {
+        $con = Connection::getConnection();
 
-    $result = $con->prepare('SELECT * FROM tb_product');
-    $result->execute();
+        $result = $con->prepare('SELECT * FROM tb_product');
+        $result->execute();
 
-    parent::render('product/list', $result);
-  }
+        parent::render('product/list', $result);
+    }
 
-  public function addAction(): void
-  {
-    parent::render('product/add');
-  }
+    public function addAction(): void
+    {
+        $con = Connection::getConnection();
 
-  public function editAction(): void
-  {
-    parent::render('product/edit');
-  }
+        if ($_POST) {
+            $name = $_POST['name'];
+            $description = $_POST['description'];
+            $value = $_POST['value'];
+            $photo = $_POST['photo'];
+            $quantity = $_POST['quantity'];
+            $categoryId = $_POST['category_id'];
+            $createdAt = date('Y-m-d H:i:s');
+
+            $query = "INSERT INTO tb_product (name, description, photo, quantity, value, category_id, created_at) VALUES('{$name}', '{$description}', '{$photo}', '{$quantity}', '{$value}', '{$categoryId}', '{$createdAt}' )";
+
+            $result = $con->prepare($query);
+            $result->execute();
+
+            echo 'Pronto! Produto adicionado';
+        }
+
+        $result = $con->prepare('SELECT * FROM tb_category');
+        $result->execute();
+
+        parent::render('product/add', $result);
+    }
+
+    public function editAction(): void
+    {
+        parent::render('product/edit');
+    }
 }
