@@ -1,24 +1,31 @@
-<h1>Listar produtos <a href="/produtos/novo" class="btn btn-dark">+ Cadastrar</a></h1>
+<div class="d-flex align-items-start justify-content-between w-100">
+    <h1>
+        Listar produtos
+    </h1>
+    <a href="/produtos/novo" class="btn btn-dark">
+        Novo produto
+    </a>
+</div>
 
 <table class="table table-hover table-striped">
-  <thead class="table-dark">
+    <thead class="table-dark">
     <tr>
-      <th>#</th>
-      <th>Nome</th>
-      <th>Descrição</th>
-      <th>Imagem</th>
-      <th>Preço</th>
-      <th>Quantidade</th>
-      <th>Data de cadastro</th>
-      <th>Ações</th>
+        <th>#</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Imagem</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+        <th>Data de cadastro</th>
+        <th>Ações</th>
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     <?php
     while ($product = $data->fetch(\PDO::FETCH_ASSOC)) {
-      extract($product);
-      echo
-      "<tr>
+        extract($product);
+        echo
+        "<tr>
           <td> {$id} </td>
           <td> {$product} </td>
           <td> {$description} </td>
@@ -33,5 +40,5 @@
         </tr>";
     }
     ?>
-  </tbody>
+    </tbody>
 </table>

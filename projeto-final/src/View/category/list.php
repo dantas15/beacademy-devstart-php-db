@@ -1,23 +1,30 @@
-<h1>Listar categoria <a href="/categorias/nova" class="btn btn-dark">+ Cadastrar</a></h1>
+<div class="d-flex align-items-start justify-content-between w-100">
+    <h1>
+        Listar categorias
+    </h1>
+    <a href="/categorias/nova" class="btn btn-dark">
+        Nova categoria
+    </a>
+</div>
 
 <table class="table table-hover table-striped">
-  <thead class="table-dark">
+    <thead class="table-dark">
     <tr>
-      <th>#</th>
-      <th>Nome</th>
-      <th>Descrição</th>
-      <th>Ações</th>
+        <th>#</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Ações</th>
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     <?php
     while ($category = $data->fetch(\PDO::FETCH_ASSOC)) {
-      $id = $category['id'];
-      $name = $category['name'];
-      $description = $category['description'];
+        $id = $category['id'];
+        $name = $category['name'];
+        $description = $category['description'];
 
-      echo
-      "<tr>
+        echo
+        "<tr>
           <td> {$id} </td>
           <td> {$name} </td>
           <td> {$description} </td>
@@ -28,5 +35,5 @@
         </tr>";
     }
     ?>
-  </tbody>
+    </tbody>
 </table>
