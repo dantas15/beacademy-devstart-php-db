@@ -3,7 +3,7 @@
 <form method="POST">
   <div class="mb-3">
     <label for="name" class="form-label">Nome</label>
-    <input name="name" type="name" class="form-control" id="name" placeholder="Insira o nome da categoria...">
+    <input name="name" type="text" class="form-control" id="name" placeholder="Insira o nome da categoria...">
   </div>
   <div class="mb-3">
     <label for="description" class="form-label">Descrição</label>
