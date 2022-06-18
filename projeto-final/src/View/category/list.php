@@ -1,4 +1,4 @@
-<h1>Listar categoria</h1>
+<h1>Listar categoria <a href="/categorias/nova" class="btn btn-dark">+ Cadastrar</a></h1>
 
 <table class="table table-hover table-striped">
   <thead class="table-dark">

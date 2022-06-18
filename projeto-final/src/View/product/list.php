@@ -1,4 +1,4 @@
-<h1>Listar produtos</h1>
+<h1>Listar produtos <a href="/produtos/novo" class="btn btn-dark">+ Cadastrar</a></h1>
 
 <table class="table table-hover table-striped">
   <thead class="table-dark">
