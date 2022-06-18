@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Connection;
+namespace App\Controller\Connection;
 
 abstract class Connection
 {

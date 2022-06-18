@@ -2,7 +2,8 @@
 
 include '../vendor/autoload.php';
 
-use App\Connection\Connection;
+use App\Controller\Connection\Connection;
+use App\Controller\ErrorController;
 
 $connection = Connection::getConnection();
 $query = 'SELECT * FROM tb_category;';
@@ -10,40 +11,16 @@ $query = 'SELECT * FROM tb_category;';
 $preparacao = $connection->prepare($query);
 $preparacao->execute();
 
-var_dump($preparacao);
+$url = explode('?', $_SERVER['REQUEST_URI'])[0];
 
-while ($registro = $preparacao->fetch()) {
-  var_dump($registro);
+$routes = include '../config/routes.php';
+
+if (!isset($routes[$url])) {
+  (new ErrorController())->notFoundAction();
+  exit;
 }
 
-// use App\Controller\IndexController;
-// use App\Controller\ProductController;
-// use App\Controller\ErrorController;
+$controllerName = $routes[$url]['controller'];
+$methodName = $routes[$url]['method'];
 
-// $url = explode('?', $_SERVER['REQUEST_URI'])[0];
-
-// function route(string $controllerName, string $methodName)
-// {
-//   return [
-//     'controller' => $controllerName,
-//     'method' => $methodName,
-//   ];
-// }
-
-// $routes = [
-//   '/' => route(IndexController::class, 'indexAction'),
-//   '/produtos' => route(ProductController::class, 'listAction'),
-//   '/produtos/novo' => route(ProductController::class, 'addAction'),
-// ];
-
-// if (!isset($routes[$url])) {
-//   (new ErrorController())->notFoundAction();
-//   exit;
-// }
-
-// $controllerName = $routes[$url]['controller'];
-// $methodName = $routes[$url]['method'];
-
-// (new $controllerName())->$methodName();
-  
-// var_dump($routes[$url]);
+(new $controllerName())->$methodName();
