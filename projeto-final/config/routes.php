@@ -19,6 +19,7 @@ $routes = [
   '/produtos/novo' => route(ProductController::class, 'addAction'),
   '/categorias' => route(CategoryController::class, 'listAction'),
   '/categorias/nova' => route(CategoryController::class, 'addAction'),
+  '/categorias/excluir' => route(CategoryController::class, 'removeAction'),
 ];
 
 return $routes;

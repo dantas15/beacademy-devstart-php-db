@@ -6,16 +6,25 @@
       <th>#</th>
       <th>Nome</th>
       <th>Descrição</th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
     <?php
     while ($category = $data->fetch(\PDO::FETCH_ASSOC)) {
-      echo '<tr>';
-      echo '<td>' . $category['id'] . '</td>';
-      echo '<td>' . $category['name'] . '</td>';
-      echo '<td>' . $category['description'] . '</td>';
-      echo '</tr>';
+      $id = $category['id'];
+      $name = $category['name'];
+      $description = $category['description'];
+
+      echo
+      "<tr>
+          <td> {$id} </td>
+          <td> {$name} </td>
+          <td> {$description} </td>
+          <td>
+            <a href='/categorias/excluir?id={$id}'class='btn btn-sm btn-danger'>Excluir</a>
+          </td>
+        </tr>";
     }
     ?>
   </tbody>
