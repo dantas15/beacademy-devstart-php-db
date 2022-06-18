@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Controller\Connection\Connection;
+use App\Connection\Connection;
 
 class ProductController extends AbstractController
 {

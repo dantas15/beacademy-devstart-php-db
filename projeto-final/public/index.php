@@ -2,7 +2,7 @@
 
 include '../vendor/autoload.php';
 
-use App\Controller\Connection\Connection;
+use App\Connection\Connection;
 use App\Controller\ErrorController;
 
 $connection = Connection::getConnection();
@@ -16,8 +16,8 @@ $url = explode('?', $_SERVER['REQUEST_URI'])[0];
 $routes = include '../config/routes.php';
 
 if (!isset($routes[$url])) {
-  (new ErrorController())->notFoundAction();
-  exit;
+    (new ErrorController())->notFoundAction();
+    exit;
 }
 
 $controllerName = $routes[$url]['controller'];

@@ -4,76 +4,76 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Controller\Connection\Connection;
+use App\Connection\Connection;
 
 class CategoryController extends AbstractController
 {
 
-  public function listAction(): void
-  {
-    $con = Connection::getConnection();
+    public function listAction(): void
+    {
+        $con = Connection::getConnection();
 
-    $result = $con->prepare('SELECT * FROM tb_category');
-    $result->execute();
+        $result = $con->prepare('SELECT * FROM tb_category');
+        $result->execute();
 
-    parent::render('category/list', $result);
-  }
-
-  public function addAction(): void
-  {
-    if ($_POST) {
-      $name = $_POST['name'];
-      $description = $_POST['description'];
-
-      $query = "INSERT INTO tb_category (name, description) VALUE ('{$name}', '{$description}')";
-
-      $con = Connection::getConnection();
-
-      $result = $con->prepare($query);
-      $result->execute();
+        parent::render('category/list', $result);
     }
 
-    parent::render('category/add');
-  }
+    public function addAction(): void
+    {
+        if ($_POST) {
+            $name = $_POST['name'];
+            $description = $_POST['description'];
 
-  public function updateAction(): void
-  {
-    $id = $_GET['id'];
+            $query = "INSERT INTO tb_category (name, description) VALUE ('{$name}', '{$description}')";
 
-    $con = Connection::getConnection();
+            $con = Connection::getConnection();
 
-    if ($_POST) {
-      $newName = $_POST['name'];
-      $newDescription = $_POST['description'];
+            $result = $con->prepare($query);
+            $result->execute();
+        }
 
-      $queryUpdate = "UPDATE tb_category SET name='{$newName}', description='{$newDescription}' WHERE id='{$id}'";
-
-      $result = $con->prepare($queryUpdate);
-      $result->execute();
-
-      echo 'Pronto! Categoria atualizada';
+        parent::render('category/add');
     }
 
-    $query = "SELECT * FROM tb_category WHERE id='{$id}'";
+    public function updateAction(): void
+    {
+        $id = $_GET['id'];
 
-    $result = $con->prepare($query);
-    $result->execute();
+        $con = Connection::getConnection();
 
-    $data = $result->fetch(\PDO::FETCH_ASSOC);
+        if ($_POST) {
+            $newName = $_POST['name'];
+            $newDescription = $_POST['description'];
 
-    parent::render('category/edit', $data);
-  }
+            $queryUpdate = "UPDATE tb_category SET name='{$newName}', description='{$newDescription}' WHERE id='{$id}'";
 
-  public function removeAction(): void
-  {
-    $con = Connection::getConnection();
+            $result = $con->prepare($queryUpdate);
+            $result->execute();
 
-    $id = $_GET['id'];
-    $query = "DELETE FROM tb_category WHERE id=?";
+            echo 'Pronto! Categoria atualizada';
+        }
 
-    $result = $con->prepare($query);
-    $result->execute([$id]);
+        $query = "SELECT * FROM tb_category WHERE id='{$id}'";
 
-    echo 'Pronto, categoria excluída!';
-  }
+        $result = $con->prepare($query);
+        $result->execute();
+
+        $data = $result->fetch(\PDO::FETCH_ASSOC);
+
+        parent::render('category/edit', $data);
+    }
+
+    public function removeAction(): void
+    {
+        $con = Connection::getConnection();
+
+        $id = $_GET['id'];
+        $query = "DELETE FROM tb_category WHERE id=?";
+
+        $result = $con->prepare($query);
+        $result->execute([$id]);
+
+        echo 'Pronto, categoria excluída!';
+    }
 }
