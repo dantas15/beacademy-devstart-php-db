@@ -25,11 +25,15 @@ class CategoryController extends AbstractController
             $name = $_POST['name'];
             $description = $_POST['description'];
 
-            $query = "INSERT INTO tb_category (name, description) VALUE ('{$name}', '{$description}')";
-
             $con = Connection::getConnection();
 
+            $query = "INSERT INTO tb_category (name, description) VALUE (:name, :description)";
+
             $result = $con->prepare($query);
+
+            $result->bindParam(':name', $name);
+            $result->bindParam(':description', $description);
+
             $result->execute();
         }
 
@@ -46,9 +50,14 @@ class CategoryController extends AbstractController
             $newName = $_POST['name'];
             $newDescription = $_POST['description'];
 
-            $queryUpdate = "UPDATE tb_category SET name='{$newName}', description='{$newDescription}' WHERE id='{$id}'";
+            $queryUpdate = "UPDATE tb_category SET name=:name, description=:description WHERE id=:id";
 
             $result = $con->prepare($queryUpdate);
+
+            $result->bindParam(':name', $newName);
+            $result->bindParam(':description', $newDescription);
+            $result->bindParam(':id', $id);
+
             $result->execute();
 
             echo 'Pronto! Categoria atualizada';
@@ -69,10 +78,12 @@ class CategoryController extends AbstractController
         $con = Connection::getConnection();
 
         $id = $_GET['id'];
-        $query = "DELETE FROM tb_category WHERE id=?";
+        $query = "DELETE FROM tb_category WHERE id=:id";
 
         $result = $con->prepare($query);
-        $result->execute([$id]);
+
+        $result->bindParam(':id', $id);
+        $result->execute();
 
         $message = 'Pronto, categoria excluída!';
 
